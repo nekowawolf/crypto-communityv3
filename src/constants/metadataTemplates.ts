@@ -1,4 +1,4 @@
-export const dashboardMetadata = (title: string, description: string) => ({
+export const communityMetadata = (title: string, description: string) => ({
   title: `Nww | ${title}`,
   description,
 })
