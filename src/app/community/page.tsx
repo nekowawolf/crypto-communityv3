@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CommunityCard from "@/components/CommunityCard";
 import Image from "next/image";
+import { Spinner } from "@/components/ui/spinner";
 
 const categories = [
     "Airdrop",
@@ -34,7 +35,7 @@ export default function CommunityPage() {
                 <div className="max-w-6xl mx-auto flex flex-col items-center">
                     <div className="w-full max-w-2xl mb-8 text-center">
                         <h1 className="text-3xl font-bold mb-2">
-                            NWW Crypto Community
+                            NWW Community
                         </h1>
                         <p className="text-fill-color/70 max-w-md mx-auto">
                             Empowering builders, traders, and explorers to connect, share alpha, and thrive in the decentralized future.
@@ -75,7 +76,9 @@ export default function CommunityPage() {
 
                     {/* Card List */}
                     {loading ? (
-                        <div className="text-center text-fill-color/50">Loading...</div>
+                        <div className="flex justify-center p-12">
+                            <Spinner className="text-blue-500 size-10" />
+                        </div>
                     ) : (
                         <div className="flex flex-col gap-4 w-full">
                             {communityData.map((item) => (
