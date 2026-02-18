@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, Float } from '@react-three/drei';
-import {HighlightText} from './ui/HighlightText';
+import { HighlightText } from './ui/HighlightText';
 import * as THREE from 'three';
 
 const faqs = [
@@ -44,7 +44,7 @@ function Model({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: number
         const maxVertical = 0.25;   // up-down
 
         targetRotation.current.x = THREE.MathUtils.clamp(
-            mouse.current.y * maxVertical, 
+            mouse.current.y * maxVertical,
             -maxVertical,
             maxVertical
         );
@@ -99,7 +99,7 @@ export default function FAQSection() {
                     <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                         <ambientLight intensity={0.5} />
                         <directionalLight position={[10, 18, 5]} intensity={1} />
-                        <Environment preset="city" />
+                        {/* <Environment preset="city" /> */}
                         <Suspense fallback={null}>
                             <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
                                 <Model mouse={mouse} />

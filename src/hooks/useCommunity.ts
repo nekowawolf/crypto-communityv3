@@ -8,6 +8,8 @@ export const useCommunity = () => {
     const [error, setError] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState("All Types");
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
 
     useEffect(() => {
         const loadData = async () => {
@@ -26,6 +28,8 @@ export const useCommunity = () => {
     }, []);
 
     const filteredData = useMemo(() => {
+        if (!Array.isArray(communityData)) return [];
+
         return communityData.filter((item) => {
             const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesCategory = selectedCategory === "All Types" || item.category === selectedCategory;
@@ -33,13 +37,30 @@ export const useCommunity = () => {
         });
     }, [communityData, searchQuery, selectedCategory]);
 
+    const paginatedData = useMemo(() => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        return filteredData.slice(startIndex, startIndex + itemsPerPage);
+    }, [filteredData, currentPage]);
+
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchQuery, selectedCategory]);
+
     return {
-        communityData: filteredData,
+        communityData: paginatedData,
+        allData: filteredData,
         loading,
         error,
         searchQuery,
         setSearchQuery,
         selectedCategory,
-        setSelectedCategory
+        setSelectedCategory,
+        currentPage,
+        setCurrentPage,
+        totalPages,
+        totalItems: filteredData.length,
+        itemsPerPage
     };
 };

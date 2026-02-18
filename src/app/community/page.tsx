@@ -4,7 +4,6 @@ import { useCommunity } from "@/hooks/useCommunity";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CommunityCard from "@/components/CommunityCard";
-import Image from "next/image";
 import { Spinner } from "@/components/ui/spinner";
 
 const categories = [
@@ -18,6 +17,8 @@ const categories = [
     "Meme Coin"
 ];
 
+import Pagination from "@/components/Pagination";
+
 export default function CommunityPage() {
     const {
         communityData,
@@ -25,7 +26,12 @@ export default function CommunityPage() {
         searchQuery,
         setSearchQuery,
         selectedCategory,
-        setSelectedCategory
+        setSelectedCategory,
+        currentPage,
+        setCurrentPage,
+        itemsPerPage,
+        totalItems,
+        error
     } = useCommunity();
 
     return (
@@ -81,9 +87,22 @@ export default function CommunityPage() {
                         </div>
                     ) : (
                         <div className="flex flex-col gap-4 w-full">
+                            {error && (
+                                <div className="text-red-500 text-center py-4 bg-red-500/10 rounded-lg border border-red-500/20">
+                                    Error loading communities: {error}
+                                </div>
+                            )}
+
                             {communityData.map((item) => (
                                 <CommunityCard key={item._id} item={item} />
                             ))}
+
+                            <Pagination
+                                currentPage={currentPage}
+                                itemsPerPage={itemsPerPage}
+                                totalItems={totalItems}
+                                onPageChange={setCurrentPage}
+                            />
                         </div>
                     )}
                 </div>
