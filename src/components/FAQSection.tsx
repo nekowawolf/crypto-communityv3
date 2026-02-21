@@ -99,7 +99,7 @@ export default function FAQSection() {
                     <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                         <ambientLight intensity={0.5} />
                         <directionalLight position={[10, 18, 5]} intensity={1} />
-                        {/* <Environment preset="city" /> */}
+                        <Environment preset="city" />
                         <Suspense fallback={null}>
                             <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
                                 <Model mouse={mouse} />
