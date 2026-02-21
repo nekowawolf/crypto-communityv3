@@ -35,7 +35,7 @@ export const useCommunity = () => {
 
         return communityData.filter((item) => {
             const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesCategory = selectedCategory === "All Types" || item.category === selectedCategory;
+            const matchesCategory = selectedCategory === "All Types" || item.category === selectedCategory || (selectedCategory === "Developers" && item.category === "Developer");
             return matchesSearch && matchesCategory;
         });
     }, [communityData, searchQuery, selectedCategory]);
