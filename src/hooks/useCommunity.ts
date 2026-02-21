@@ -1,13 +1,16 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { CommunityItem } from '@/types/community';
 import { fetchCommunityData } from '@/services/communityService';
 
 export const useCommunity = () => {
+    const searchParams = useSearchParams();
+
     const [communityData, setCommunityData] = useState<CommunityItem[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState("All Types");
+    const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+    const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All Types");
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 

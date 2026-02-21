@@ -5,21 +5,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CommunityCard from "@/components/CommunityCard";
 import { Spinner } from "@/components/ui/spinner";
+import Pagination from "@/components/Pagination";
+import { Suspense } from "react";
+import Image from "next/image";
 
 const categories = [
     "Airdrop",
     "Trading",
     "All Types",
     "NFT",
-    "Developer",
+    "Developers",
     "Social",
     "Web3 Jobs",
     "Meme Coin"
 ];
 
-import Pagination from "@/components/Pagination";
-
-export default function CommunityPage() {
+function CommunityContent() {
     const {
         communityData,
         loading,
@@ -93,21 +94,50 @@ export default function CommunityPage() {
                                 </div>
                             )}
 
-                            {communityData.map((item) => (
-                                <CommunityCard key={item._id} item={item} />
-                            ))}
+                            <div id="fillcommunity" className="w-full flex-col flex gap-4">
+                                {communityData.length === 0 ? (
+                                    <div className="text-center py-10">
+                                        <Image
+                                            src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
+                                            alt="No data found"
+                                            width={176}
+                                            height={176}
+                                            className="mx-auto"
+                                        />
+                                        <p className="text-gray-500 mt-4">No data available.</p>
+                                    </div>
+                                ) : (
+                                    communityData.map((item) => (
+                                        <CommunityCard key={item._id} item={item} />
+                                    ))
+                                )}
+                            </div>
 
-                            <Pagination
-                                currentPage={currentPage}
-                                itemsPerPage={itemsPerPage}
-                                totalItems={totalItems}
-                                onPageChange={setCurrentPage}
-                            />
+                            {communityData.length > 0 && (
+                                <Pagination
+                                    currentPage={currentPage}
+                                    itemsPerPage={itemsPerPage}
+                                    totalItems={totalItems}
+                                    onPageChange={setCurrentPage}
+                                />
+                            )}
                         </div>
                     )}
                 </div>
             </div>
             <Footer />
         </>
+    );
+}
+
+export default function CommunityPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex justify-center min-h-screen items-center">
+                <Spinner className="text-blue-500 size-10" />
+            </div>
+        }>
+            <CommunityContent />
+        </Suspense>
     );
 }

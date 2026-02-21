@@ -3,27 +3,32 @@
 import { FaCode, FaChartLine, FaParachuteBox, FaArrowRight } from 'react-icons/fa6';
 import { RiNftFill } from "react-icons/ri";
 import { FadeIn } from "./ui/fade-in";
+import Link from 'next/link';
 
 const categories = [
     {
         icon: FaChartLine,
         name: 'Trading & Signals',
         description: 'Master the markets with real-time insights and expert signals.',
+        href: '/community?category=Trading'
     },
     {
         icon: FaParachuteBox,
         name: 'Airdrop Hunters',
         description: 'Find the next big opportunity before anyone else.',
+        href: '/community?category=Airdrop'
     },
     {
         icon: RiNftFill,
         name: 'NFT',
         description: 'Collect, trade, and explore unique digital assets.',
+        href: '/community?category=NFT'
     },
     {
         icon: FaCode,
         name: 'Developers',
         description: 'Build the future of Web3 with our developer community.',
+        href: '/community?category=Developers'
     },
 ];
 
@@ -51,7 +56,7 @@ export default function CategoryGrid() {
                         className="group relative cursor-pointer overflow-hidden rounded-2xl p-7 border border-[rgba(var(--fill-color-rgb),0.05)] bg-gradient-to-br from-blue-500/10 to-cyan-500/5 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 shadow-xl"
                     >
                         {/* Content */}
-                        <div className="relative z-10 flex flex-col h-full">
+                        <Link href={cat.href} className="relative z-10 flex flex-col h-full">
                             <div className="text-3xl text-blue-400 mb-5">
                                 <cat.icon />
                             </div>
@@ -63,12 +68,12 @@ export default function CategoryGrid() {
                             </p>
 
                             <div>
-                                <button className="flex cursor-pointer items-center gap-2 px-5 py-2.5 rounded-xl bg-[rgba(var(--fill-color-rgb),0.05)] border border-[rgba(var(--fill-color-rgb),0.1)] text-fill-color font-semibold text-sm transition-all hover:bg-blue-500/20 group-hover:border-[rgba(var(--fill-color-rgb),0.2)]">
+                                <span className="flex w-fit cursor-pointer items-center gap-2 px-5 py-2.5 rounded-xl bg-[rgba(var(--fill-color-rgb),0.05)] border border-[rgba(var(--fill-color-rgb),0.1)] text-fill-color font-semibold text-sm transition-all hover:bg-blue-500/20 group-hover:border-[rgba(var(--fill-color-rgb),0.2)]">
                                     Explore
                                     <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
-                                </button>
+                                </span>
                             </div>
-                        </div>
+                        </Link>
 
                         {/* Watermark Icon */}
                         <div className="absolute -bottom-6 -right-6 text-8xl text-fill-color opacity-[0.03] transform rotate-12 pointer-events-none transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">

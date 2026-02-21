@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import { TypeAnimation } from 'react-type-animation';
 import { FaTelegram, FaMagnifyingGlass, FaFacebook, FaReddit } from 'react-icons/fa6';
@@ -17,11 +18,32 @@ const LANGUAGES = [
 ];
 
 export default function HeroSection() {
+  const router = useRouter();
   const [pageLoaded, setPageLoaded] = useState(false);
   const [firstLineDone, setFirstLineDone] = useState(false);
   const [secondLineDone, setSecondLineDone] = useState(false);
   const [isTypewriterDone, setIsTypewriterDone] = useState(false);
   const [badgeText, setBadgeText] = useState(LANGUAGES[0]);
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearch = () => {
+    if (!searchValue.trim()) return;
+    const val = searchValue.toLowerCase();
+
+    if (val.includes("trading")) {
+      router.push(`/community?category=Trading`);
+    } else if (val.includes("nft")) {
+      router.push(`/community?category=NFT`);
+    } else if (val.includes("airdrop")) {
+      router.push(`/community?category=Airdrop`);
+    } else if (val.includes("web3")) {
+      router.push(`/community?category=Web3 Jobs`);
+    } else if (val.includes("developers")) {
+      router.push(`/community?category=Developers`);
+    } else {
+      router.push(`/community?search=${encodeURIComponent(searchValue)}`);
+    }
+  };
 
   const firstSequence = useMemo(() => [
     "Discover Trusted",
@@ -225,9 +247,13 @@ export default function HeroSection() {
               placeholder="Search trading, NFT, or developer communities..."
               className="w-full bg-transparent text-fill-color px-4 py-3 focus:outline-none placeholder-gray-500"
               disabled={!isTypewriterDone}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
             />
             <button
               disabled={!isTypewriterDone}
+              onClick={handleSearch}
               className="bg-blue-500 text-white font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer disabled:opacity-50"
             >
               Search
