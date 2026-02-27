@@ -18,16 +18,13 @@ export default function SubmissionRulesPage() {
                 <div className="max-w-4xl mx-auto relative z-10">
 
                     {/* Header Section */}
-                    <div className="text-center mb-12 sm:mb-16 relative">
+                    <div className="text-center mb-6 relative">
                         <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-fill-color mb-4 sm:mb-6 inline-block relative leading-tight">
                             <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">
                                 <div className="w-[220px] sm:w-[300px] h-[120px] sm:h-[150px] rounded-full bg-blue-500/20 blur-[80px]" />
                             </div>
                             Submission <span className="text-blue-400">Rules</span>
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-fill-color/80 max-w-xl sm:max-w-2xl mx-auto leading-relaxed">
-                            Ready to list your community on the NWW Directory? Read our guidelines below to ensure your community meets our quality standards. It is 100% free!
-                        </p>
                     </div>
 
                     {/* Rules Container */}
