@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { TypeAnimation } from 'react-type-animation';
 import { FaTelegram, FaMagnifyingGlass, FaFacebook, FaReddit } from 'react-icons/fa6';
 import { BsDiscord } from 'react-icons/bs';
+import { fetchCommunityData } from '@/services/communityService';
 
 const LANGUAGES = [
   "Communities",
@@ -25,6 +26,7 @@ export default function HeroSection() {
   const [isTypewriterDone, setIsTypewriterDone] = useState(false);
   const [badgeText, setBadgeText] = useState(LANGUAGES[0]);
   const [searchValue, setSearchValue] = useState('');
+  const [totalCommunities, setTotalCommunities] = useState<number>(0);
 
   const handleSearch = () => {
     if (!searchValue.trim()) return;
@@ -54,6 +56,20 @@ export default function HeroSection() {
     "Crypto Communities",
     () => setSecondLineDone(true),
   ], []);
+
+  useEffect(() => {
+    const loadCount = async () => {
+      try {
+        const data = await fetchCommunityData();
+        if (Array.isArray(data)) {
+          setTotalCommunities(data.length);
+        }
+      } catch (error) {
+        console.error("Error fetching total communities:", error);
+      }
+    };
+    loadCount();
+  }, []);
 
   useEffect(() => {
     if (document.readyState === 'complete') {
@@ -150,8 +166,9 @@ export default function HeroSection() {
         <div className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase">
           <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-blue-400 opacity-75 animate-ping" />
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-blue-500" />
-          <span>120+ {badgeText}</span>
+          <span>{totalCommunities}+ {badgeText}</span>
         </div>
+
       </motion.div>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
