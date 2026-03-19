@@ -11,7 +11,7 @@ export default function WhyUs() {
     const [title2Complete, setTitle2Complete] = useState(false);
 
     return (
-        <section className="py-24 body-color relative overflow-hidden">
+        <section id="whyus" className="py-24 body-color relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-900/5 to-transparent" />
 
             <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">

@@ -1,6 +1,19 @@
 'use client';
 
 export default function Footer() {
+
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+
+        const el = document.getElementById(id);
+        if (el) {
+            const yOffset = -80;
+            const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     return (
         <footer className="relative py-10 mt-20 overflow-hidden after:absolute after:inset-0 after:bg-gradient-to-t after:from-blue-600/30 after:via-blue-500/10 after:to-transparent after:pointer-events-none">
             <div className="max-w-7xl mx-auto px-4">
@@ -15,7 +28,7 @@ export default function Footer() {
                     </h3>
                 </div>
 
-                {/* Links and Copyright */}
+                {/* Links */}
                 <div className="mt-4 flex flex-col md:flex-row justify-between items-center text-sm text-fill-color/60 border-t border-white/5 pt-8">
 
                     <p className="order-2 md:order-1 mt-8 md:mt-0 text-center md:text-left">
@@ -23,15 +36,31 @@ export default function Footer() {
                     </p>
 
                     <div className="order-1 md:order-2 flex space-x-6 mt-4 md:mt-0">
-                        <a href="#features" className="text-fill-color/60 hover:text-fill-color transition-colors">
-                            Features
+                        
+                        <a
+                            href="#get-listed"
+                            onClick={(e) => handleScroll(e, 'get-listed')}
+                            className="text-fill-color/60 hover:text-fill-color transition-colors"
+                        >
+                            Get Listed
                         </a>
-                        <a href="#manage" className="text-fill-color/60 hover:text-fill-color transition-colors">
-                            Manage
+
+                        <a
+                            href="#whyus"
+                            onClick={(e) => handleScroll(e, 'whyus')}
+                            className="text-fill-color/60 hover:text-fill-color transition-colors"
+                        >
+                            Why Us
                         </a>
-                        <a href="#browse" className="text-fill-color/60 hover:text-fill-color transition-colors">
-                            Browse
+
+                        <a
+                            href="#explore"
+                            onClick={(e) => handleScroll(e, 'explore')}
+                            className="text-fill-color/60 hover:text-fill-color transition-colors"
+                        >
+                            Explore
                         </a>
+
                     </div>
 
                 </div>

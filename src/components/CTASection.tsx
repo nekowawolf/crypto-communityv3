@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CTASection() {
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section id="get-listed" className="py-20 px-6 relative overflow-hidden">
       <div className="max-w-5xl mx-auto relative">
         <div className="relative card-color2 rounded-3xl p-8 sm:p-20 text-center shadow-2xl border border-blue-500/20 overflow-hidden z-20">
           {/* Glow */}

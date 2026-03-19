@@ -121,7 +121,7 @@ export default function Header() {
                 <FaGithub />
               </Link>
               <Link
-                href="https://web.telegram.org/" target="_blank"
+                href="https://t.me/nekowawolf" target="_blank"
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
               >
                 <FaTelegram />
@@ -189,7 +189,7 @@ export default function Header() {
                 <FaGithub />
               </Link>
               <Link
-                href="https://web.telegram.org/" target="_blank"
+                href="https://t.me/nekowawolf" target="_blank"
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center"
               >
                 <FaTelegram />

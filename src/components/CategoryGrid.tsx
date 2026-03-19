@@ -34,7 +34,7 @@ const categories = [
 
 export default function CategoryGrid() {
     return (
-        <section id="categories" className="py-20 px-6 max-w-7xl mx-auto">
+        <section id="explore" className="py-20 px-6 max-w-7xl mx-auto">
             <div className="text-center mb-12">
                 <FadeIn>
                     <h2 className="text-3xl sm:text-5xl font-extrabold text-fill-color mb-4">
