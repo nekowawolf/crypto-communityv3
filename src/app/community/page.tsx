@@ -15,7 +15,7 @@ const categories = [
     "All Types",
     "NFT",
     "Developers",
-    "Social",
+    "Forum",
     "Web3 Jobs",
     "Meme Coin"
 ];
