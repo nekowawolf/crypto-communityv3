@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import { TypeAnimation } from 'react-type-animation';
 import { FaTelegram, FaMagnifyingGlass, FaFacebook, FaReddit } from 'react-icons/fa6';
 import { BsDiscord } from 'react-icons/bs';
-import { fetchCommunityData } from '@/services/communityService';
+import { fetchCommunityStats } from '@/services/communityService';
 
 const LANGUAGES = [
   "Communities",
@@ -60,9 +60,9 @@ export default function HeroSection() {
   useEffect(() => {
     const loadCount = async () => {
       try {
-        const data = await fetchCommunityData();
-        if (Array.isArray(data)) {
-          setTotalCommunities(data.length);
+        const stats = await fetchCommunityStats();
+        if (stats && typeof stats.total === 'number') {
+          setTotalCommunities(stats.total);
         }
       } catch (error) {
         console.error("Error fetching total communities:", error);
