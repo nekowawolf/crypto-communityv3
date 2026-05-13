@@ -140,14 +140,8 @@ export default function Header() {
                 onClick={onToggleTheme}
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center text-lg hover:opacity-80 cursor-pointer"
               >
-                {mounted ? (
-                  <>
-                    <FaSun className={!isDarkMode ? '' : 'hidden'} />
-                    <FaMoon className={isDarkMode ? '' : 'hidden'} />
-                  </>
-                ) : (
-                  <div className="w-5 h-5" /> // Placeholder to avoid layout shift
-                )}
+                <FaSun className="theme-icon-sun" />
+                <FaMoon className="theme-icon-moon" />
               </button>
 
               <button

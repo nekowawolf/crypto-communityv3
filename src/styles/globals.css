@@ -129,3 +129,17 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
   border-color: rgba(0, 0, 0, 0.15);
 }
+
+.theme-icon-sun {
+  display: block;
+}
+.theme-icon-moon {
+  display: none;
+}
+
+.darkmode .theme-icon-sun {
+  display: none;
+}
+.darkmode .theme-icon-moon {
+  display: block;
+}
