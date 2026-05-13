@@ -42,7 +42,7 @@ function CommunityContent() {
                 <div className="max-w-6xl mx-auto flex flex-col items-center">
                     <div className="w-full max-w-2xl mb-8 text-center">
                         <h1 className="text-3xl font-bold mb-2">
-                            NWW Community
+                            Nww Community List
                         </h1>
                         <p className="text-fill-color/70 max-w-md mx-auto">
                             Empowering builders, traders, and explorers to connect, share alpha, and thrive in the decentralized future.
