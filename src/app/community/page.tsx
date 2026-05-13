@@ -58,7 +58,7 @@ function CommunityContent() {
                         </div>
                         <input
                             type="text"
-                            placeholder="Search Project"
+                            placeholder="Search Community"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full py-3 pl-12 pr-6 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50"

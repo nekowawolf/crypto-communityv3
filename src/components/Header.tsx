@@ -9,11 +9,13 @@ import { toggleDarkMode } from '@/utils/darkmode';
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const current =
       typeof window !== 'undefined' &&
       localStorage.getItem('darkmode') === 'active';
@@ -138,8 +140,14 @@ export default function Header() {
                 onClick={onToggleTheme}
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center text-lg hover:opacity-80 cursor-pointer"
               >
-                <FaSun className={!isDarkMode ? '' : 'hidden'} />
-                <FaMoon className={isDarkMode ? '' : 'hidden'} />
+                {mounted ? (
+                  <>
+                    <FaSun className={!isDarkMode ? '' : 'hidden'} />
+                    <FaMoon className={isDarkMode ? '' : 'hidden'} />
+                  </>
+                ) : (
+                  <div className="w-5 h-5" /> // Placeholder to avoid layout shift
+                )}
               </button>
 
               <button

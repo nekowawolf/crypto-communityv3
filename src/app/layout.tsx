@@ -11,7 +11,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>nekowawolf</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <script
           dangerouslySetInnerHTML={{
