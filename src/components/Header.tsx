@@ -106,7 +106,7 @@ export default function Header() {
                 Airdrops
               </Link>
               <Link
-                href="#"
+                href="https://web3.nekowawolf.xyz/" target="_blank"
                 className="text-fill-color/70 font-semibold hover:opacity-80"
               >
                 Web3 Tools
@@ -176,7 +176,7 @@ export default function Header() {
               Airdrops
             </Link>
              <Link
-              href=""
+              href="https://web3.nekowawolf.xyz/" target="_blank"
               onClick={() => setIsMenuOpen(false)}
               className="block font-semibold text-fill-color/70"
             >
