@@ -10,25 +10,25 @@ const categories = [
         icon: FaChartLine,
         name: 'Trading & Signals',
         description: 'Master the markets with real-time insights and expert signals.',
-        href: '/community?category=Trading'
+        href: '/directory?category=Trading'
     },
     {
         icon: FaParachuteBox,
         name: 'Airdrop Hunters',
         description: 'Find the next big opportunity before anyone else.',
-        href: '/community?category=Airdrop'
+        href: '/directory?category=Airdrop'
     },
     {
         icon: RiNftFill,
         name: 'NFT',
         description: 'Collect, trade, and explore unique digital assets.',
-        href: '/community?category=NFT'
+        href: '/directory?category=NFT'
     },
     {
         icon: FaCode,
         name: 'Developers',
         description: 'Build the future of Web3 with our developer community.',
-        href: '/community?category=Developers'
+        href: '/directory?category=Developers'
     },
 ];
 

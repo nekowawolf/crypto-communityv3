@@ -33,17 +33,17 @@ export default function HeroSection() {
     const val = searchValue.toLowerCase();
 
     if (val.includes("trading")) {
-      router.push(`/community?category=Trading`);
+      router.push(`/directory?category=Trading`);
     } else if (val.includes("nft")) {
-      router.push(`/community?category=NFT`);
+      router.push(`/directory?category=NFT`);
     } else if (val.includes("airdrop")) {
-      router.push(`/community?category=Airdrop`);
+      router.push(`/directory?category=Airdrop`);
     } else if (val.includes("web3")) {
-      router.push(`/community?category=Web3 Jobs`);
+      router.push(`/directory?category=Web3 Jobs`);
     } else if (val.includes("developers")) {
-      router.push(`/community?category=Developers`);
+      router.push(`/directory?category=Developers`);
     } else {
-      router.push(`/community?search=${encodeURIComponent(searchValue)}`);
+      router.push(`/directory?search=${encodeURIComponent(searchValue)}`);
     }
   };
 
