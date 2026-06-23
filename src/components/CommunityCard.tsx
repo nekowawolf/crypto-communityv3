@@ -3,8 +3,8 @@ import { CommunityItem } from '@/types/community';
 
 export default function CommunityCard({ item }: { item: CommunityItem }) {
     return (
-        <div className="card-color rounded-2xl p-4 flex items-center gap-4 w-full max-w-2xl mx-auto mb-4 border border-color hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 group">
-            <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-gray-800">
+        <div className="glass-card rounded-2xl p-4 flex items-center gap-4 w-full max-w-2xl mx-auto mb-4 card-hover transition-all group">
+            <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-card-color">
                <FallbackImage
                     alt={item.name}
                     className="object-cover w-full h-full transition-transform duration-300"
