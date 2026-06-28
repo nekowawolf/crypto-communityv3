@@ -67,11 +67,8 @@ export default function Footer() {
             >
                     {/* Layer 1: Default text */}
                     <div className="flex justify-center items-center select-none pointer-events-none">
-                        <h3 className="text-[10vw] font-black text-fill-color opacity-10 mx-2 tracking-tighter">
-                            NWW
-                        </h3>
-                        <h3 className="text-[10vw] font-black text-fill-color opacity-10 mx-2 tracking-tighter">
-                            COMMUNITY
+                        <h3 className="text-[6.5vw] sm:text-[7vw] font-black text-fill-color opacity-10 tracking-tighter whitespace-nowrap">
+                            NWW CRYPTO COMMUNITY
                         </h3>
                     </div>
 
@@ -86,11 +83,8 @@ export default function Footer() {
                             WebkitMaskImage: brightMask,
                         }}
                     >
-                        <motion.h3 className="text-[10vw] font-black text-blue-600 mx-2 tracking-tighter">
-                            NWW
-                        </motion.h3>
-                        <motion.h3 className="text-[10vw] font-black text-blue-600 mx-2 tracking-tighter">
-                            COMMUNITY
+                        <motion.h3 className="text-[6.5vw] sm:text-[7vw] font-black text-blue-600 tracking-tighter whitespace-nowrap">
+                            NWW CRYPTO COMMUNITY
                         </motion.h3>
                     </motion.div>
 
@@ -105,11 +99,8 @@ export default function Footer() {
                             WebkitMaskImage: glowMask,
                         }}
                     >
-                        <motion.h3 className="text-[10vw] font-black text-blue-500 mx-2 tracking-tighter blur-[12px]">
-                            NWW
-                        </motion.h3>
-                        <motion.h3 className="text-[10vw] font-black text-blue-500 mx-2 tracking-tighter blur-[12px]">
-                            COMMUNITY
+                        <motion.h3 className="text-[6.5vw] sm:text-[7vw] font-black text-blue-500 tracking-tighter blur-[12px] whitespace-nowrap">
+                            NWW CRYPTO COMMUNITY
                         </motion.h3>
                     </motion.div>
             </div>
@@ -120,7 +111,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <p className="order-2 md:order-1 mt-6 md:mt-0 text-center md:text-left">
-                    &copy; Nww Community, {new Date().getFullYear()}.
+                    &copy; Nww Crypto Community, {new Date().getFullYear()}.
                 </p>
 
                 {/* Links */}

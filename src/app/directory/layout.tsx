@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { communityMetadata } from "@/constants/metadataTemplates";
 
-export const metadata: Metadata = communityMetadata("Community", "Explore ongoing and completed airdrops with clear project details.");
+export const metadata: Metadata = communityMetadata("Community", "Explore a comprehensive list of crypto communities and connect with like-minded individuals.");
 
 export default function CommunityLayout({
     children,
