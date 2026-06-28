@@ -66,12 +66,12 @@ function CommunityContent() {
                     </div>
 
                     {/* Filters */}
-                    <div className="flex flex-wrap justify-center gap-2 mb-10">
+                    <div className="flex flex-wrap justify-center items-center gap-2 mb-10">
                         {categories.map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${selectedCategory === category
+                                className={`px-4 py-2 rounded-full text-sm font-medium leading-none transition-colors duration-200 ${selectedCategory === category
                                     ? "bg-blue-600 text-white"
                                     : "card-color text-fill-color/70 hover:text-fill-color border border-color"
                                     }`}
