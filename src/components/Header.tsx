@@ -80,7 +80,7 @@ export default function Header() {
         >
           <div className="h-full px-6 sm:px-8 flex items-center justify-between">
             {/* LEFT */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 cursor-pointer">
             <img
               src="https://nekowawolf.github.io/cdn-images/images/2026/1768368937_logo.jpg"
               alt="Logo"
@@ -95,19 +95,19 @@ export default function Header() {
             <nav className="hidden sm:flex items-center gap-6">
               <Link
                 href="/directory"
-                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
               >
                 Crypto Community
               </Link>
               <Link
                 href="https://ai.nekowawolf.xyz/" target="_blank"
-                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
               >
                 AI Tools
               </Link>
               <Link
                 href="https://github.nekowawolf.xyz/" target="_blank"
-                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
               >
                 GitHub Repos
               </Link>
@@ -118,19 +118,19 @@ export default function Header() {
               {/* SOCIAL + DARK MODE + BURGER MENU */}
               <Link
                 href="https://github.com/nekowawolf/" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80 cursor-pointer"
               >
                 <FaGithub />
               </Link>
               <Link
                 href="https://t.me/nekowawolf" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80 cursor-pointer"
               >
                 <FaTelegram />
               </Link>
               <Link
                 href="https://x.com/nekowawolf_" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80 cursor-pointer"
               >
                 <FaXTwitter />
               </Link>
@@ -186,19 +186,19 @@ export default function Header() {
             <div className="flex gap-3 pt-2">
               <Link
                 href="https://github.com/nekowawolf/" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
               >
                 <FaGithub />
               </Link>
               <Link
                 href="https://t.me/nekowawolf" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
               >
                 <FaTelegram />
               </Link>
               <Link
                 href="https://x.com/nekowawolf_" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
               >
                 <FaXTwitter />
               </Link>

@@ -33,7 +33,7 @@ const ExploreCommunity = () => {
             bg-blue-600 hover:bg-blue-500 text-white rounded-full font-semibold
             transition-all duration-300
             shadow-[0_0_16px_rgba(37,99,235,0.4)] 
-            hover:shadow-[0_0_32px_rgba(37,99,235,0.6)]"
+            hover:shadow-[0_0_32px_rgba(37,99,235,0.6)] cursor-pointer"
           >
             Explore Now
             <FiArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-2" />

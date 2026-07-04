@@ -56,7 +56,7 @@ export default function CategoryGrid() {
                         className="group relative cursor-pointer overflow-hidden rounded-2xl p-7 border border-[rgba(var(--fill-color-rgb),0.05)] bg-gradient-to-br from-blue-500/10 to-cyan-500/5 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 shadow-xl"
                     >
                         {/* Content */}
-                        <Link href={cat.href} className="relative z-10 flex flex-col h-full">
+                        <Link href={cat.href} className="relative z-10 flex flex-col h-full cursor-pointer">
                             <div className="text-3xl text-blue-400 mb-5">
                                 <cat.icon />
                             </div>

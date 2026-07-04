@@ -41,7 +41,7 @@ export default function LogoMarquee() {
                         {logos.map((logo, idx) => (
                             <a
                                 key={idx}
-                                className="block w-16 h-16 rounded-md overflow-hidden border border-color transform transition-transform relative"
+                                className="block w-16 h-16 rounded-md overflow-hidden border border-color transform transition-transform relative cursor-pointer"
                             >
                                 <Image
                                     src={logo}

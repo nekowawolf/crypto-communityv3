@@ -78,13 +78,13 @@ export default function Footer() {
                         </p>
                         <div className="flex flex-col space-y-6 mt-4">
                             <div className="flex items-center space-x-4">
-                                <a href="https://x.com/nwwonee" target="_blank" rel="noopener noreferrer" className="p-3 bg-[rgba(var(--fill-color-rgb),0.05)] hover:bg-[rgba(var(--fill-color-rgb),0.1)] border border-[var(--border-divider)] rounded-xl transition-all duration-300 text-fill-color hover:-translate-y-1 shadow-sm opacity-70 hover:opacity-100">
+                                <a href="https://x.com/nwwonee" target="_blank" rel="noopener noreferrer" className="p-3 bg-[rgba(var(--fill-color-rgb),0.05)] hover:bg-[rgba(var(--fill-color-rgb),0.1)] border border-[var(--border-divider)] rounded-xl transition-all duration-300 text-fill-color hover:-translate-y-1 shadow-sm opacity-70 hover:opacity-100 cursor-pointer">
                                     <FaXTwitter className="text-lg" />
                                 </a>
-                                <a href="https://instagram.com/nwwonee" target="_blank" rel="noopener noreferrer" className="p-3 bg-[rgba(var(--fill-color-rgb),0.05)] hover:bg-[rgba(var(--fill-color-rgb),0.1)] border border-[var(--border-divider)] rounded-xl transition-all duration-300 text-fill-color hover:-translate-y-1 shadow-sm opacity-70 hover:opacity-100">
+                                <a href="https://instagram.com/nwwonee" target="_blank" rel="noopener noreferrer" className="p-3 bg-[rgba(var(--fill-color-rgb),0.05)] hover:bg-[rgba(var(--fill-color-rgb),0.1)] border border-[var(--border-divider)] rounded-xl transition-all duration-300 text-fill-color hover:-translate-y-1 shadow-sm opacity-70 hover:opacity-100 cursor-pointer">
                                     <FaInstagram className="text-lg" />
                                 </a>
-                                <a href="https://threads.net/@nwwonee" target="_blank" rel="noopener noreferrer" className="p-3 bg-[rgba(var(--fill-color-rgb),0.05)] hover:bg-[rgba(var(--fill-color-rgb),0.1)] border border-[var(--border-divider)] rounded-xl transition-all duration-300 text-fill-color hover:-translate-y-1 shadow-sm opacity-70 hover:opacity-100">
+                                <a href="https://threads.net/@nwwonee" target="_blank" rel="noopener noreferrer" className="p-3 bg-[rgba(var(--fill-color-rgb),0.05)] hover:bg-[rgba(var(--fill-color-rgb),0.1)] border border-[var(--border-divider)] rounded-xl transition-all duration-300 text-fill-color hover:-translate-y-1 shadow-sm opacity-70 hover:opacity-100 cursor-pointer">
                                     <FaThreads className="text-lg" />
                                 </a>
                             </div>
@@ -101,7 +101,7 @@ export default function Footer() {
                             <a
                                 href="https://airdrop.nekowawolf.xyz"
                                 target="_blank"
-                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
                             >
                                 <svg className="w-5 h-5 mr-3 text-fill-color/30 flex-shrink-0 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 2v14h14" />
@@ -111,7 +111,7 @@ export default function Footer() {
                             <a
                                 href="https://web3.nekowawolf.xyz/"
                                 target="_blank"
-                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
                             >
                                 <svg className="w-5 h-5 mr-3 text-fill-color/30 flex-shrink-0 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 2v14h14" />
@@ -121,7 +121,7 @@ export default function Footer() {
                             <a
                                 href="https://ai.nekowawolf.xyz/"
                                 target="_blank"
-                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
                             >
                                 <svg className="w-5 h-5 mr-3 text-fill-color/30 flex-shrink-0 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 2v14h14" />
@@ -131,7 +131,7 @@ export default function Footer() {
                             <a
                                 href="https://github.nekowawolf.xyz/"
                                 target="_blank"
-                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                                className="flex items-center group text-fill-color/60 hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
                             >
                                 <svg className="w-5 h-5 mr-3 text-fill-color/30 flex-shrink-0 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 2v14h14" />

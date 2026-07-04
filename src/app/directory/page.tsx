@@ -71,9 +71,9 @@ function CommunityContent() {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium leading-none transition-colors duration-200 ${selectedCategory === category
+                                className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium leading-none transition-colors duration-200 ${selectedCategory === category
                                     ? "bg-blue-600 text-white"
-                                    : "card-color text-fill-color/70 hover:text-fill-color border border-color"
+                                    : "card-color text-fill-color/70 border border-color hover:!text-[var(--fill-color)] hover:!border-blue-600"
                                     }`}
                             >
                                 {category}

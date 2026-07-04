@@ -34,7 +34,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
                 href={item.link_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 sm:py-2 sm:px-6 rounded-xl text-sm transition-colors duration-200 shadow-lg shadow-blue-600/20"
+                className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 sm:py-2 sm:px-6 rounded-xl text-sm transition-colors duration-200 shadow-lg shadow-blue-600/20 cursor-pointer"
             >
                 JOIN
             </a>
