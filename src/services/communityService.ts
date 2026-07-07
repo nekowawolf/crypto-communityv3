@@ -29,11 +29,6 @@ export const fetchCommunityData = async (): Promise<CommunityItem[]> => {
             resultData = data;
         }
 
-        for (let i = resultData.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [resultData[i], resultData[j]] = [resultData[j], resultData[i]];
-        }
-
         return resultData;
     } catch (error) {
         console.error('Error fetching community data:', error);
