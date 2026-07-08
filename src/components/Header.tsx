@@ -100,16 +100,16 @@ export default function Header() {
                 Crypto Community
               </Link>
               <Link
-                href="https://ai.nekowawolf.xyz/" target="_blank"
-                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
+                href="/news"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
-                AI Tools
+                News
               </Link>
               <Link
-                href="https://github.nekowawolf.xyz/" target="_blank"
-                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300 cursor-pointer"
+                href="/activity"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
-                GitHub Repos
+                Activity
               </Link>
             </nav>
 
@@ -169,18 +169,18 @@ export default function Header() {
               Crypto Community
             </Link>
             <Link
-              href="https://ai.nekowawolf.xyz/" target="_blank"
+              href="/news"
               onClick={() => setIsMenuOpen(false)}
               className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
-              AI Tools
+              News
             </Link>
             <Link
-              href="https://github.nekowawolf.xyz/" target="_blank"
+              href="/activity"
               onClick={() => setIsMenuOpen(false)}
               className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
-              GitHub Repos
+              Activity
             </Link>
 
             <div className="flex gap-3 pt-2">
