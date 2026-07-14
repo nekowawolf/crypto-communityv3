@@ -8,6 +8,7 @@ import { Spinner } from "@/components/ui/spinner";
 import Pagination from "@/components/Pagination";
 import { Suspense, useRef, useState } from "react";
 import Image from "next/image";
+import { CgClose } from "react-icons/cg";
 
 const categories = [
     "Airdrop",
@@ -26,6 +27,7 @@ function CommunityContent() {
         loading,
         searchQuery,
         setSearchQuery,
+        handleClearSearch,
         selectedCategory,
         setSelectedCategory,
         currentPage,
@@ -90,8 +92,17 @@ function CommunityContent() {
                             placeholder="Search Community"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full py-3 pl-12 pr-6 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50"
+                            className="w-full py-3 pl-12 pr-12 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50"
                         />
+                        {searchQuery && (
+                            <button
+                                onClick={handleClearSearch}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100 transition-opacity text-fill-color cursor-pointer"
+                                aria-label="Clear search"
+                            >
+                                <CgClose className="w-5 h-5" />
+                            </button>
+                        )}
                     </div>
 
                     {/* Filters */}

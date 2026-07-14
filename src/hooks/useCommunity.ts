@@ -148,6 +148,11 @@ export const useCommunity = () => {
         return filteredData.slice(startIndex, startIndex + itemsPerPage);
     }, [filteredData, validCurrentPage, itemsPerPage]);
 
+    const handleClearSearch = () => {
+        setSearchQuery('');
+        setCurrentPage(1);
+    };
+
     return {
         communityData: paginatedData,
         allData: filteredData,
@@ -155,6 +160,7 @@ export const useCommunity = () => {
         error,
         searchQuery,
         setSearchQuery,
+        handleClearSearch,
         selectedCategory,
         setSelectedCategory: handleCategoryChange,
         currentPage: validCurrentPage,
