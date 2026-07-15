@@ -1,6 +1,7 @@
 "use client";
 
 import { useCommunity } from "@/hooks/useCommunity";
+import NwwOneeAIChat from "@/components/NwwOneeAIChat";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CommunityCard from "@/components/CommunityCard";
@@ -178,6 +179,7 @@ function CommunityContent() {
                 </div>
             </div>
             <Footer />
+            <NwwOneeAIChat />
         </>
     );
 }
