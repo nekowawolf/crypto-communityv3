@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FaXTwitter, FaSun, FaMoon } from 'react-icons/fa6';
+import { FaSun, FaMoon } from 'react-icons/fa6';
 import { HiOutlineX } from 'react-icons/hi';
-import { FaGithub, FaTelegram, FaBars } from 'react-icons/fa';
+import { FaGithub, FaBars, FaGlobe } from 'react-icons/fa';
+import { AiOutlineLink } from 'react-icons/ai';
 import { toggleDarkMode } from '@/utils/darkmode';
 
 export default function Header() {
@@ -117,22 +118,22 @@ export default function Header() {
             <div className="flex items-center gap-3">
               {/* SOCIAL + DARK MODE + BURGER MENU */}
               <Link
+                href="https://nekowawolf.xyz/" target="_blank"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
+              >
+                <FaGlobe />
+              </Link>
+              <Link
+                href="https://link.nekowawolf.xyz/" target="_blank"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
+              >
+                <AiOutlineLink />
+              </Link>
+              <Link
                 href="https://github.com/nekowawolf/" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80 cursor-pointer"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
               >
                 <FaGithub />
-              </Link>
-              <Link
-                href="https://t.me/nekowawolf" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80 cursor-pointer"
-              >
-                <FaTelegram />
-              </Link>
-              <Link
-                href="https://x.com/nekowawolf_" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80 cursor-pointer"
-              >
-                <FaXTwitter />
               </Link>
 
               <button
@@ -185,22 +186,22 @@ export default function Header() {
 
             <div className="flex gap-3 pt-2">
               <Link
+                href="https://nekowawolf.xyz/" target="_blank"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
+              >
+                <FaGlobe />
+              </Link>
+              <Link
+                href="https://link.nekowawolf.xyz/" target="_blank"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
+              >
+                <AiOutlineLink />
+              </Link>
+              <Link
                 href="https://github.com/nekowawolf/" target="_blank"
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
               >
                 <FaGithub />
-              </Link>
-              <Link
-                href="https://t.me/nekowawolf" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
-              >
-                <FaTelegram />
-              </Link>
-              <Link
-                href="https://x.com/nekowawolf_" target="_blank"
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
-              >
-                <FaXTwitter />
               </Link>
             </div>
           </div>
