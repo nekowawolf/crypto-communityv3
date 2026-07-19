@@ -149,15 +149,15 @@ function CommunityContent() {
 
                             <div id="fillcommunity" className="w-full flex-col flex gap-4">
                                 {communityData.length === 0 ? (
-                                    <div className="text-center py-10">
+                                    <div className="text-center py-1">
                                         <Image
-                                            src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
+                                            src="https://nekowawolf.github.io/cdn-images/images/2026/1784476217_nwwonee_search.webp"
                                             alt="No data found"
-                                            width={176}
-                                            height={176}
+                                            width={160}
+                                            height={160}
                                             className="mx-auto"
                                         />
-                                        <p className="text-gray-500 mt-4">No data available.</p>
+                                        <p className="text-fill-color/50 -mt-4">No data available.</p>
                                     </div>
                                 ) : (
                                     communityData.map((item) => (
