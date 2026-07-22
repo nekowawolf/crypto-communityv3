@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import CommunityCard from "@/components/CommunityCard";
 import { Spinner } from "@/components/ui/spinner";
 import Pagination from "@/components/Pagination";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { CgClose } from "react-icons/cg";
 
@@ -39,9 +39,37 @@ function CommunityContent() {
     } = useCommunity();
 
     const scrollRef = useRef<HTMLDivElement>(null);
+    const fadeRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
+
+    useEffect(() => {
+        const checkOverflow = () => {
+            if (scrollRef.current && fadeRef.current) {
+                const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
+                const hasMore = Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1;
+                fadeRef.current.style.opacity = hasMore ? '1' : '0';
+                fadeRef.current.style.visibility = hasMore ? 'visible' : 'hidden';
+            }
+        };
+
+        const timeoutId = setTimeout(checkOverflow, 50);
+        
+        window.addEventListener('resize', checkOverflow);
+        const scrollElement = scrollRef.current;
+        if (scrollElement) {
+            scrollElement.addEventListener('scroll', checkOverflow);
+        }
+        
+        return () => {
+            clearTimeout(timeoutId);
+            window.removeEventListener('resize', checkOverflow);
+            if (scrollElement) {
+                scrollElement.removeEventListener('scroll', checkOverflow);
+            }
+        };
+    }, [categories.length]);
 
     const onMouseDown = (e: React.MouseEvent) => {
         setIsDragging(true);
@@ -131,7 +159,11 @@ function CommunityContent() {
                             ))}
                         </div>
                         {/* Fade indicator */}
-                        <div className="absolute right-0 top-0 h-8 w-12 bg-gradient-to-l from-blue-600/20 to-transparent pointer-events-none" />
+                        <div 
+                            ref={fadeRef}
+                            className="absolute right-0 top-0 h-8 w-12 bg-gradient-to-l from-blue-600/20 to-transparent pointer-events-none transition-opacity duration-200"
+                            style={{ opacity: 0, visibility: 'hidden' }}
+                        />
                     </div>
 
                     {/* Card List */}
