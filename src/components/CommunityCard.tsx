@@ -1,5 +1,7 @@
 import { FallbackImage } from './FallbackImage';
 import { CommunityItem } from '@/types/community';
+import { chatStore } from '@/components/NwwOneeAIChat';
+import { CiBookmark } from "react-icons/ci";
 
 export default function CommunityCard({ item }: { item: CommunityItem }) {
     return (
@@ -25,9 +27,23 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
                     {item.platforms}
                 </p>
 
-                <span className="inline-flex w-fit items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                    {item.category}
-                </span>
+                <div className="flex items-center gap-2">
+                    <span className="inline-flex w-fit items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                        {item.category}
+                    </span>
+                    <button 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            chatStore.setIsOpen(true);
+                            chatStore.setActiveView('user');
+                        }}
+                        className="cursor-pointer opacity-70 hover:opacity-100 transition-all text-fill-color"
+                        title="Bookmark"
+                    >
+                        <CiBookmark className="w-5 h-5" />
+                    </button>
+                </div>
             </div>
 
             <a
