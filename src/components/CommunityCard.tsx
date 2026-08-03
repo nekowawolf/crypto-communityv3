@@ -10,7 +10,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
                <FallbackImage
                     alt={item.name}
                     className="object-cover w-full h-full transition-transform duration-300"
-                    src={item.img_url?.trim()}
+                    src={item.image_url?.trim()}
                     width={100}
                     height={100}
                 />
@@ -47,7 +47,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
             </div>
 
             <a
-                href={item.link_url}
+                href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 sm:py-2 sm:px-6 rounded-xl text-sm transition-colors duration-200 shadow-lg shadow-blue-600/20 cursor-pointer"

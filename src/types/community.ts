@@ -3,6 +3,6 @@ export interface CommunityItem {
     name: string;
     platforms: string;
     category: string;
-    img_url: string;
-    link_url: string;
+    image_url: string;
+    link: string;
 }
