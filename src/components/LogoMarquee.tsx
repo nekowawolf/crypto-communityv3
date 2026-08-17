@@ -1,7 +1,6 @@
 'use client';
 
 import Marquee from 'react-fast-marquee';
-import Image from 'next/image';
 
 const logos = [
     "https://nekowawolf.github.io/cdn-images/images/2025/1766365966_1000171132.jpg",
@@ -43,12 +42,10 @@ export default function LogoMarquee() {
                                 key={idx}
                                 className="block w-16 h-16 rounded-md overflow-hidden border border-color transform transition-transform relative cursor-pointer"
                             >
-                                <Image
+                                <img
                                     src={logo}
                                     alt={`Community ${idx}`}
-                                    fill
-                                    sizes="64px"
-                                    className="object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+                                    className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
                                 />
                             </a>
                         ))}

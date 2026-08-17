@@ -8,7 +8,6 @@ import CommunityCard from "@/components/CommunityCard";
 import { Spinner } from "@/components/ui/spinner";
 import Pagination from "@/components/Pagination";
 import { Suspense, useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import { CgClose } from "react-icons/cg";
 
 const categories = [
@@ -182,7 +181,7 @@ function CommunityContent() {
                             <div id="fillcommunity" className="w-full flex-col flex gap-4">
                                 {communityData.length === 0 ? (
                                     <div className="text-center py-1">
-                                        <Image
+                                        <img
                                             src="https://nekowawolf.github.io/cdn-images/images/2026/1784476217_nwwonee_search.webp"
                                             alt="No data found"
                                             width={160}
