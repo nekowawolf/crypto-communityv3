@@ -3,26 +3,26 @@
 import Marquee from 'react-fast-marquee';
 
 const logos = [
-    "https://nekowawolf.github.io/cdn-images/images/2025/1766365966_1000171132.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756244_airdrop_sultan.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756325_stress_capital.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756371_kkpc.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756496_tomket.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756599_bubadibabo.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756686_exa.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771756959_alchemy.webp",
-    "https://nekowawolf.github.io/delete-later/assets/img/bgpt1.jpg",
-    "https://nekowawolf.github.io/delete-later/assets/img/cryptosiastdrops.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771757302_polkadot.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771757362_bc.jpg",
-    "https://nekowawolf.github.io/delete-later/assets/img/pgs1.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771757941_hca.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771757978_blockdev.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771758005_nftid.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771758040_cc.jpg",
-    "https://nekowawolf.github.io/delete-later/assets/img/bu21.jpg",
-    "https://nekowawolf.github.io/delete-later/assets/img/evo.jpg",
-    "https://nekowawolf.github.io/cdn-images/images/2026/1771758134_ETH_Global.webp"
+    "https://cdn.nekowawolf.xyz/image/2026/1787498168_1766365966_1000171132.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498201_1771756244_airdrop_sultan.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498227_1771756325_stress_capital.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498243_1771756371_kkpc.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498256_1771756496_tomket.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498266_1771756599_bubadibabo.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498278_1771756686_exa.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498287_1771756959_alchemy.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498316_bgpt1.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498333_cryptosiastdrops.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498353_1771757302_polkadot.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498368_1771757362_bc.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498387_pgs1.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498403_1771757941_hca.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498414_1771757978_blockdev.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498430_1771758005_nftid.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498442_1771758040_cc.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498457_bu21.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498466_evo.webp",
+    "https://cdn.nekowawolf.xyz/image/2026/1787498483_1771758134_ETH_Global.webp"
 ];
 
 export default function LogoMarquee() {
