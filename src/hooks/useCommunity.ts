@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, usePathname } from 'next/navigation';
 import { CommunityItem } from '@/types/community';
 import { fetchCommunityData } from '@/services/communityService';
+import Fuse from 'fuse.js';
 
 let isInitialLoad = true;
 
@@ -15,7 +16,41 @@ export const useCommunity = () => {
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All Types");
     const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1);
+    const [suggestion, setSuggestion] = useState<string | null>(null);
     const itemsPerPage = 10;
+
+    useEffect(() => {
+        if (!searchQuery || communityData.length === 0) {
+            setSuggestion(null);
+            return;
+        }
+
+        const exactMatchExists = communityData.some(c => 
+            c.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        if (exactMatchExists) {
+            setSuggestion(null);
+            return;
+        }
+
+        const fuse = new Fuse(communityData, {
+            keys: ['name'],
+            threshold: 0.4,
+        });
+
+        const results = fuse.search(searchQuery);
+        if (results.length > 0) {
+            const bestMatch = results[0].item.name;
+            if (bestMatch.toLowerCase() !== searchQuery.toLowerCase()) {
+                setSuggestion(bestMatch);
+            } else {
+                setSuggestion(null);
+            }
+        } else {
+            setSuggestion(null);
+        }
+    }, [searchQuery, communityData]);
 
     useEffect(() => {
         const loadData = async () => {
@@ -153,6 +188,11 @@ export const useCommunity = () => {
         setCurrentPage(1);
     };
 
+    const handleSuggestionClick = (newQuery: string) => {
+        setSearchQuery(newQuery);
+        setCurrentPage(1);
+    };
+
     return {
         communityData: paginatedData,
         allData: filteredData,
@@ -167,6 +207,8 @@ export const useCommunity = () => {
         setCurrentPage: handlePageChange,
         totalPages,
         totalItems: filteredData.length,
-        itemsPerPage
+        itemsPerPage,
+        suggestion,
+        handleSuggestionClick
     };
 };

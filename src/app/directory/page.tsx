@@ -34,7 +34,9 @@ function CommunityContent() {
         setCurrentPage,
         itemsPerPage,
         totalItems,
-        error
+        error,
+        suggestion,
+        handleSuggestionClick
     } = useCommunity();
 
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -131,6 +133,19 @@ function CommunityContent() {
                                 <CgClose className="w-5 h-5" />
                             </button>
                         )}
+                        
+                        <div className="absolute left-0 top-full pt-1 pl-5 w-full text-left z-10 pointer-events-none">
+                            <div className={`text-xs text-fill-color/70 transition-opacity duration-300 pointer-events-auto ${suggestion ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+                                Did you mean:{' '}
+                                <button 
+                                    onClick={() => suggestion && handleSuggestionClick(suggestion)} 
+                                    className="font-semibold text-blue-500 hover:underline cursor-pointer"
+                                >
+                                    {suggestion}
+                                </button>
+                                ?
+                            </div>
+                        </div>
                     </div>
 
                     {/* Filters */}
