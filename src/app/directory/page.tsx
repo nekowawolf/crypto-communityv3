@@ -9,6 +9,7 @@ import { Spinner } from "@/components/ui/spinner";
 import Pagination from "@/components/Pagination";
 import { Suspense, useRef, useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
+import { GoSearch } from "react-icons/go";
 
 const categories = [
     "Airdrop",
@@ -111,18 +112,14 @@ function CommunityContent() {
                     </div>
 
                     {/* Search Bar */}
-                    <div className="w-full max-w-xl mb-6 relative">
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-fill-color/50">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                            </svg>
-                        </div>
+                    <div className="w-full max-w-xl mb-6 relative search-container">
+                        <GoSearch className="search-icon absolute left-4 top-1/2 -translate-y-1/2 text-fill-color w-5 h-5" />
                         <input
                             type="text"
                             placeholder="Search Community"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full py-3 pl-12 pr-12 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50"
+                            className="w-full py-3 pl-12 pr-12 rounded-full card-color border border-color text-fill-color placeholder:text-fill-color/50 custom-search-focus"
                         />
                         {searchQuery && (
                             <button

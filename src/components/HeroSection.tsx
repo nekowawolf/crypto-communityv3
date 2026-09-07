@@ -257,12 +257,12 @@ export default function HeroSection() {
           className={`max-w-xl mx-auto mt-18 relative group ${!isTypewriterDone ? 'pointer-events-none select-none' : ''}`}
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
-          <div className="relative flex items-center card-color2 rounded-xl border border-color p-2 shadow-2xl">
-            <FaMagnifyingGlass className="text-gray-500 ml-4 text-xl" />
+          <div className="relative flex items-center card-color2 rounded-xl border border-color p-2 shadow-2xl search-container">
+            <FaMagnifyingGlass className="text-gray-500 ml-4 text-xl search-icon" />
             <input
               type="text"
               placeholder="Search trading, NFT, or developer communities..."
-              className="w-full bg-transparent text-fill-color px-4 py-3 focus:outline-none placeholder-gray-500"
+              className="w-full bg-transparent text-fill-color px-4 py-3 placeholder-gray-500 custom-search-focus"
               disabled={!isTypewriterDone}
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
