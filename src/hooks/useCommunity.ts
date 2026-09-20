@@ -17,7 +17,7 @@ export const useCommunity = () => {
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All Types");
     const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1);
     const [suggestion, setSuggestion] = useState<string | null>(null);
-    const itemsPerPage = 10;
+    const itemsPerPage = 6;
 
     useEffect(() => {
         if (!searchQuery || communityData.length === 0) {

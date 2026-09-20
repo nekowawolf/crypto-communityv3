@@ -100,8 +100,8 @@ function CommunityContent() {
     return (
         <>
             <Header />
-            <div className="min-h-screen body-color text-fill-color p-8 pt-36 font-sans">
-                <div className="max-w-6xl mx-auto flex flex-col items-center">
+            <div className="min-h-screen body-color text-fill-color p-8 pt-12 font-sans">
+                <div className="max-w-7xl mx-auto flex flex-col items-center">
                     <div className="w-full max-w-2xl mb-8 text-center">
                         <h1 className="text-3xl font-bold mb-2">
                             Nww Community List
@@ -177,22 +177,22 @@ function CommunityContent() {
                         />
                     </div>
 
-                    {/* Card List */}
+                    {/* Card Grid */}
                     {loading ? (
                         <div className="flex justify-center p-12">
                             <Spinner className="text-blue-500 size-10" />
                         </div>
                     ) : (
-                        <div className="flex flex-col gap-4 w-full">
+                        <div className="flex flex-col gap-4 w-full items-center">
                             {error && (
-                                <div className="text-red-500 text-center py-4 bg-red-500/10 rounded-lg border border-red-500/20">
+                                <div className="text-red-500 text-center py-4 bg-red-500/10 rounded-lg border border-red-500/20 w-full mb-4">
                                     Error loading communities: {error}
                                 </div>
                             )}
 
-                            <div id="fillcommunity" className="w-full flex-col flex gap-4">
+                            <div id="fillcommunity" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                                 {communityData.length === 0 ? (
-                                    <div className="text-center py-1">
+                                    <div className="col-span-full text-center py-1">
                                         <img
                                             src="https://cdn.nekowawolf.xyz/image/2026/1787422427_nwwonee_search.webp"
                                             alt="No data found"
