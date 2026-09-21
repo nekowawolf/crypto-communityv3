@@ -15,6 +15,7 @@ export const useCommunity = () => {
     const [error, setError] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All Types");
+    const [selectedPlatform, setSelectedPlatform] = useState(searchParams.get('platform') || 'All');
     const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1);
     const [suggestion, setSuggestion] = useState<string | null>(null);
     const itemsPerPage = 6;
@@ -127,11 +128,14 @@ export const useCommunity = () => {
         return () => clearTimeout(handler);
     }, [searchQuery, pathname, searchParams]);
 
-    const updateURL = (newCategory: string, newSearch: string, newPage: number) => {
+    const updateURL = (newCategory: string, newPlatform: string, newSearch: string, newPage: number) => {
         const params = new URLSearchParams(window.location.search);
         
         if (newCategory !== 'All Types') params.set('category', newCategory);
         else params.delete('category');
+
+        if (newPlatform !== 'All') params.set('platform', newPlatform);
+        else params.delete('platform');
         
         if (newSearch) params.set('search', newSearch);
         else params.delete('search');
@@ -147,12 +151,18 @@ export const useCommunity = () => {
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category);
         setCurrentPage(1);
-        updateURL(category, searchQuery, 1);
+        updateURL(category, selectedPlatform, searchQuery, 1);
+    };
+
+    const handlePlatformChange = (platform: string) => {
+        setSelectedPlatform(platform);
+        setCurrentPage(1);
+        updateURL(selectedCategory, platform, searchQuery, 1);
     };
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
-        updateURL(selectedCategory, searchQuery, page);
+        updateURL(selectedCategory, selectedPlatform, searchQuery, page);
     };
 
     const filteredData = useMemo(() => {
@@ -161,19 +171,22 @@ export const useCommunity = () => {
         return communityData.filter((item) => {
             const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesCategory = selectedCategory === "All Types" || item.category === selectedCategory || (selectedCategory === "Developers" && item.category === "Developer");
-            return matchesSearch && matchesCategory;
+            const matchesPlatform = selectedPlatform === 'All' || item.platforms?.toLowerCase() === selectedPlatform.toLowerCase();
+            return matchesSearch && matchesCategory && matchesPlatform;
         });
-    }, [communityData, searchQuery, selectedCategory]);
+    }, [communityData, searchQuery, selectedCategory, selectedPlatform]);
 
     useEffect(() => {
         const currentSearch = searchParams.get('search') || '';
         const currentCat = searchParams.get('category') || 'All Types';
+        const currentPlatform = searchParams.get('platform') || 'All';
         const currentPg = Number(searchParams.get('page')) || 1;
         
         setSearchQuery(currentSearch);
         setSelectedCategory(currentCat);
+        setSelectedPlatform(currentPlatform);
         setCurrentPage(currentPg);
-    }, [searchParams.get('search'), searchParams.get('category'), searchParams.get('page')]);
+    }, [searchParams.get('search'), searchParams.get('category'), searchParams.get('platform'), searchParams.get('page')]);
 
     const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
     const validCurrentPage = Math.min(Math.max(1, currentPage), totalPages);
@@ -203,6 +216,8 @@ export const useCommunity = () => {
         handleClearSearch,
         selectedCategory,
         setSelectedCategory: handleCategoryChange,
+        selectedPlatform,
+        setSelectedPlatform: handlePlatformChange,
         currentPage: validCurrentPage,
         setCurrentPage: handlePageChange,
         totalPages,

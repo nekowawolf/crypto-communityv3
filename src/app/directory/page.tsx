@@ -10,6 +10,7 @@ import Pagination from "@/components/Pagination";
 import { Suspense, useRef, useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { GoSearch } from "react-icons/go";
+import { FiChevronDown, FiCheck, FiFilter } from "react-icons/fi";
 
 const categories = [
     "Airdrop",
@@ -22,6 +23,67 @@ const categories = [
     "Meme Coin"
 ];
 
+const platformOptions = ['All', 'Discord', 'Telegram', 'WhatsApp', 'Facebook' , 'Reddit'];
+
+function FilterDropdown({ selectedPlatform, setSelectedPlatform }: { selectedPlatform: string; setSelectedPlatform: (platform: string) => void }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const hasActiveFilter = selectedPlatform !== 'All';
+
+    return (
+        <div className="relative inline-block text-left shrink-0" ref={dropdownRef}>
+            <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className={`flex items-center justify-center gap-2 px-4 h-12 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer ${isOpen || hasActiveFilter ? 'bg-blue-500/20 text-fill-color border border-blue-500/50' : 'card-color text-fill-color/70 border border-color hover:!text-[var(--fill-color)] hover:!border-blue-600'}`}
+            >
+                <FiFilter className={`w-4 h-4 ${isOpen || hasActiveFilter ? 'text-blue-400' : ''}`} />
+                <span>Platform</span>
+                <FiChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isOpen && (
+                <div className="absolute z-50 mt-2 w-56 rounded-xl card-color border border-color shadow-xl overflow-hidden right-0 origin-top-right">
+                    <div className="px-3 pb-3 pt-5">
+                        <div className="flex items-center gap-1.5 mb-2 px-2 text-fill-color/50">
+                            <FiFilter className="w-3.5 h-3.5" />
+                            <h3 className="text-xs font-semibold uppercase tracking-wider">Platform</h3>
+                        </div>
+                        <div className="space-y-1">
+                            {platformOptions.map((platform) => (
+                                <button
+                                    key={platform}
+                                    type="button"
+                                    onClick={() => {
+                                        setSelectedPlatform(platform);
+                                        setIsOpen(false);
+                                    }}
+                                    className={`w-full flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-colors cursor-pointer ${selectedPlatform === platform ? 'bg-blue-500/20 text-blue-400 font-medium' : 'text-fill-color/70 hover:bg-[rgba(var(--fill-color-rgb),0.1)] hover:text-fill-color'}`}
+                                >
+                                    <span>{platform === 'All' ? 'All Platforms' : platform}</span>
+                                    {selectedPlatform === platform && <FiCheck className="w-4 h-4" />}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
 function CommunityContent() {
     const {
         communityData,
@@ -31,6 +93,8 @@ function CommunityContent() {
         handleClearSearch,
         selectedCategory,
         setSelectedCategory,
+        selectedPlatform,
+        setSelectedPlatform,
         currentPage,
         setCurrentPage,
         itemsPerPage,
@@ -111,8 +175,9 @@ function CommunityContent() {
                         </p>
                     </div>
 
-                    {/* Search Bar */}
-                    <div className="w-full max-w-xl mb-6 relative search-container">
+                    {/* Search Bar & Platform Filter */}
+                    <div className="w-full max-w-2xl mb-6 flex gap-3">
+                        <div className="relative flex-grow search-container">
                         <GoSearch className="search-icon absolute left-4 top-1/2 -translate-y-1/2 text-fill-color w-5 h-5" />
                         <input
                             type="text"
@@ -143,6 +208,8 @@ function CommunityContent() {
                                 ?
                             </div>
                         </div>
+                        </div>
+                        <FilterDropdown selectedPlatform={selectedPlatform} setSelectedPlatform={setSelectedPlatform} />
                     </div>
 
                     {/* Filters */}
