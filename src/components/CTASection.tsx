@@ -22,15 +22,13 @@ export default function CTASection() {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <a
-                href="https://t.me/nekowawolf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/add-community"
                 className="px-5 py-3 sm:px-8 sm:py-4 bg-white text-blue-500 font-bold text-sm sm:text-lg rounded-lg sm:rounded-xl hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer"
               >
                 <FaPlus className="text-xs sm:text-sm" />
                 Submit Your Community
-              </a>
+              </Link>
 
               <Link
                 href="/submission-rules"

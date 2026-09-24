@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { communityMetadata } from "@/constants/metadataTemplates";
-import { FaTelegram, FaUsers, FaTag, FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
+import { FaPlus, FaUsers, FaTag, FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -42,7 +43,7 @@ export default function SubmissionRulesPage() {
                                 </h2>
                                 <div className="pl-9 sm:pl-11 space-y-3 sm:space-y-4 text-fill-color/80 text-sm sm:text-base md:text-lg leading-relaxed">
                                     <p className="text-fill-color/80">
-                                        Submitting your community is simple and straightforward. Just reach out to our admin on Telegram by clicking the <span className="font-semibold text-fill-color">&quot;Submit Your Community&quot;</span> button below or on our homepage.
+                                        Submitting your community is simple and straightforward. Just fill out the submission form by clicking the <span className="font-semibold text-fill-color">&quot;Submit Your Community&quot;</span> button below or on our homepage.
                                     </p>
                                     <p className="text-fill-color/80">
                                         Provide us with your community link and a brief description. We will manually verify your community to ensure it meets our quality standards before listing it on the platform.
@@ -133,18 +134,13 @@ export default function SubmissionRulesPage() {
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-fill-color mb-5 sm:mb-6">
                             Ready to get listed?
                         </h2>
-                        <a
-                            href="https://t.me/nekowawolf"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href="/add-community"
                             className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-500 font-bold text-base sm:text-lg rounded-xl hover:bg-gray-100 transition-colors shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] cursor-pointer max-w-full"
                         >
-                            <FaTelegram className="text-xl sm:text-2xl" />
-                            <span>Submit via Telegram</span>
-                        </a>
-                        <p className="mt-4 sm:mt-5 text-fill-color/60 text-xs sm:text-sm">
-                            You will be redirected to our admin&apos;s Telegram (@nekowawolf)
-                        </p>
+                            <FaPlus className="text-xl sm:text-2xl" />
+                            <span>Submit Your Community</span>
+                        </Link>
                     </div>
 
                 </div>
