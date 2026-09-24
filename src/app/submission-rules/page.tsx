@@ -136,9 +136,9 @@ export default function SubmissionRulesPage() {
                         </h2>
                         <Link
                             href="/add-community"
-                            className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-500 font-bold text-base sm:text-lg rounded-xl hover:bg-gray-100 transition-colors shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] cursor-pointer max-w-full"
+                            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-500 font-bold text-base sm:text-lg rounded-xl hover:bg-gray-100 transition-colors shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] cursor-pointer max-w-full"
                         >
-                            <FaPlus className="text-xl sm:text-2xl" />
+                            <FaPlus className="text-xs sm:text-sm" />
                             <span>Submit Your Community</span>
                         </Link>
                     </div>
