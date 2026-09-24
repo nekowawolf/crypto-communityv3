@@ -7,6 +7,25 @@ import { fetchCommunityData, submitCommunity } from '@/services/communityService
 import { Turnstile } from '@marsidev/react-turnstile';
 import { Spinner } from '@/components/ui/spinner';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
+import { FaRegCircleCheck } from 'react-icons/fa6';
+import { LiaTimesCircleSolid } from 'react-icons/lia';
+
+const isValidPlatform = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase();
+    const validDomains = [
+      'discord.com', 'discord.gg',
+      't.me', 'telegram.me', 'telegram.org',
+      'whatsapp.com', 'wa.me',
+      'facebook.com', 'fb.com', 'fb.me',
+      'reddit.com'
+    ];
+    return validDomains.some(domain => hostname === domain || hostname.endsWith('.' + domain));
+  } catch (e) {
+    return false;
+  }
+};
 
 export default function AddCommunityClient() {
   const [communityLink, setCommunityLink] = useState('');
@@ -19,6 +38,7 @@ export default function AddCommunityClient() {
   const [existingUrls, setExistingUrls] = useState<string[]>([]);
   const [isCheckingUrl, setIsCheckingUrl] = useState(false);
   const [urlExists, setUrlExists] = useState<boolean | null>(null);
+  const [platformError, setPlatformError] = useState<string | null>(null);
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -50,6 +70,7 @@ export default function AddCommunityClient() {
     if (!communityLink) {
       setUrlExists(null);
       setIsCheckingUrl(false);
+      setPlatformError(null);
       return;
     }
 
@@ -57,7 +78,17 @@ export default function AddCommunityClient() {
     if (!urlRegex.test(communityLink)) {
       setUrlExists(null);
       setIsCheckingUrl(false);
+      setPlatformError(null);
       return;
+    }
+
+    if (!isValidPlatform(communityLink)) {
+      setPlatformError("URL must be from Discord, Telegram, WhatsApp, Facebook, or Reddit");
+      setUrlExists(null);
+      setIsCheckingUrl(false);
+      return;
+    } else {
+      setPlatformError(null);
     }
 
     setIsCheckingUrl(true);
@@ -79,16 +110,7 @@ export default function AddCommunityClient() {
       return;
     }
 
-    const urlRegex = /^https?:\/\/.+$/;
-    if (!urlRegex.test(communityLink)) {
-      toast.error('Invalid URL format for Community Link');
-      return;
-    }
-
-    if (urlExists === true) {
-      toast.error('This community is already listed.');
-      return;
-    }
+    if (!!platformError || urlExists === true) return;
 
     if (!name) {
       toast.error('Name (Added by) is required.');
@@ -96,6 +118,7 @@ export default function AddCommunityClient() {
     }
 
     if (link) {
+      const urlRegex = /^https?:\/\/.+$/;
       if (!urlRegex.test(link)) {
         toast.error('Invalid Link URL format');
         return;
@@ -140,9 +163,37 @@ export default function AddCommunityClient() {
 
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
               <label className="text-sm font-semibold text-fill-color">Community Link <span className="text-red-500">*</span></label>
               {isCheckingUrl && <Spinner className="w-4 h-4 text-blue-500" />}
+              {urlExists !== null && (
+                <div className="relative flex items-center gap-1.5" ref={tooltipRef}>
+                  {urlExists ? (
+                    <LiaTimesCircleSolid className="w-4 h-4 text-red-500" />
+                  ) : (
+                    <FaRegCircleCheck className="w-4 h-4 text-green-500" />
+                  )}
+                  <span className={`text-xs font-medium ${urlExists ? 'text-red-500' : 'text-green-500'}`}>
+                    {urlExists ? 'Listed' : 'Available'}
+                  </span>
+                  
+                  <button 
+                    type="button"
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                    onClick={() => setShowTooltip(!showTooltip)}
+                    className="text-fill-color/50 hover:text-fill-color cursor-pointer transition-colors outline-none"
+                  >
+                    <AiOutlineExclamationCircle className="w-4 h-4" />
+                  </button>
+                  
+                  {showTooltip && (
+                    <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 w-max bg-[var(--card-color)] border border-[var(--border-divider)] px-3 py-2 rounded-lg shadow-lg z-10 text-xs font-medium animate-in fade-in zoom-in duration-200">
+                      {urlExists ? "This community is already listed." : "This community is not listed yet."}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <div className="relative">
               <input
@@ -150,29 +201,17 @@ export default function AddCommunityClient() {
                 value={communityLink}
                 onChange={(e) => setCommunityLink(e.target.value)}
                 placeholder="https://t.me/community"
-                className={`w-full px-4 py-3 bg-[rgba(var(--fill-color-rgb),0.03)] border rounded-xl text-fill-color focus:outline-none transition-colors ${ urlExists === true ? 'border-red-500/50 focus:border-red-500' : urlExists === false ? 'border-green-500/50 focus:border-green-500' : 'border-[var(--border-divider)] focus:border-blue-500' }`}
+                className={`w-full px-4 py-3 bg-[rgba(var(--fill-color-rgb),0.03)] border rounded-xl text-fill-color focus:outline-none transition-colors ${
+                  platformError || urlExists === true 
+                    ? 'border-red-500/50 focus:border-red-500' 
+                    : urlExists === false
+                      ? 'border-green-500/50 focus:border-green-500'
+                      : 'border-[var(--border-divider)] focus:border-blue-500'
+                }`}
               />
-              {urlExists === true && (
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
-                  <AiOutlineExclamationCircle 
-                    className="w-5 h-5 text-red-500 cursor-pointer" 
-                    onMouseEnter={() => setShowTooltip(true)}
-                    onMouseLeave={() => setShowTooltip(false)}
-                    onClick={() => setShowTooltip(!showTooltip)}
-                  />
-                  {showTooltip && (
-                    <div 
-                      ref={tooltipRef}
-                      className="absolute right-0 top-full mt-2 w-48 p-2 bg-red-500/10 border border-red-500/20 rounded-lg text-xs text-red-500 z-10 shadow-lg backdrop-blur-sm"
-                    >
-                      This URL is already submitted or listed in the directory.
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
-            {urlExists === false && (
-              <p className="text-xs text-green-500 mt-1">This URL is available to submit.</p>
+            {platformError && (
+              <p className="text-xs text-red-500 mt-1">{platformError}</p>
             )}
           </div>
 
