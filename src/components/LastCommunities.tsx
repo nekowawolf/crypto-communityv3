@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CommunityItem } from '@/types/community';
 import { Spinner } from '@/components/ui/spinner';
@@ -11,7 +10,6 @@ import Pagination2 from '@/components/Pagination2';
 const ITEMS_PER_PAGE = 5;
 
 export default function LastCommunities() {
-  const router = useRouter();
   const [activities, setActivities] = useState<CommunityItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -92,20 +90,10 @@ export default function LastCommunities() {
               {displayedActivities.map((community: any) => (
                 <div
                   key={community._id}
-                  onClick={() => {
-                    if (window.innerWidth >= 640) {
-                      router.push(`/directory/${community._id}`);
-                    }
-                  }}
-                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 relative transition-transform duration-300 sm:hover:translate-x-2 sm:cursor-pointer cursor-default w-full"
+                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 relative transition-transform duration-300 sm:hover:translate-x-2 cursor-default w-full"
                 >
                   <div
-                    onClick={(e) => {
-                      if (window.innerWidth < 640) {
-                        router.push(`/directory/${community._id}`);
-                      }
-                    }}
-                    className="flex items-center gap-3 shrink-0 cursor-pointer w-fit"
+                    className="flex items-center gap-3 shrink-0 cursor-default w-fit"
                   >
                     {community.image_url ? (
                       <img
