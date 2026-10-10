@@ -74,7 +74,7 @@ export default function AddCommunityClient() {
       return;
     }
     if (!isValidPlatform(communityLink)) {
-      setPlatformError("URL must be from Discord, Telegram, WhatsApp, Facebook, or Reddit");
+      setPlatformError("Community URL must be from Discord, Telegram, WhatsApp, Facebook, or Reddit");
       setUrlExists(null);
       setIsCheckingUrl(false);
       return;
@@ -93,7 +93,7 @@ export default function AddCommunityClient() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!communityLink) {
-      toast.error('Community Link is required.');
+      toast.error('Community URL is required.');
       return;
     }
     if (!!platformError || urlExists === true) return;
@@ -137,13 +137,13 @@ export default function AddCommunityClient() {
             /add-community
           </h1>
           <p className="text-fill-color/60 text-sm max-w-full sm:max-w-xl leading-relaxed">
-            Know a great crypto community that belongs here? Submit it below. Help us build the most comprehensive directory of crypto communities.
+            Know a great crypto community that belongs here? Submit its URL and help grow the ecosystem directory. Every submission is reviewed before publishing.
           </p>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6 w-full">
           <div className="flex flex-col space-y-2">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-semibold text-fill-color">Community Link <span className="text-red-500">*</span></label>
+              <label className="text-sm font-semibold text-fill-color">Community URL <span className="text-red-500">*</span></label>
               {isCheckingUrl && <Spinner className="w-3.5 h-3.5 text-blue-500" />}
               {!isCheckingUrl && urlExists !== null && (
                 <div className="relative flex items-center gap-1.5" ref={tooltipRef}>
@@ -197,7 +197,7 @@ export default function AddCommunityClient() {
             />
           </div>
           <div className="flex flex-col space-y-2">
-            <label className="text-sm font-semibold text-fill-color">Link <span className="text-fill-color/40 font-normal">(optional)</span></label>
+            <label className="text-sm font-semibold text-fill-color">Contributor link <span className="text-fill-color/40 font-normal">(optional)</span></label>
             <input
               type="url"
               value={link}
