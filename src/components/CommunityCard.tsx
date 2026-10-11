@@ -69,7 +69,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
                 <div className="flex flex-wrap gap-1.5 mb-3">
                     {item.category && (
                         <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 shrink-0">
-                            {item.category}
+                            <span className="relative top-px">{item.category}</span>
                         </span>
                     )}
                 </div>
@@ -142,7 +142,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
                                     </h2>
                                     {item.category && (
                                         <span className="inline-flex mt-2 text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                            {item.category}
+                                            <span className="relative top-px">{item.category}</span>
                                         </span>
                                     )}
                                 </div>
