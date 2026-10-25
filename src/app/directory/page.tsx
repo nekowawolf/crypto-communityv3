@@ -261,13 +261,13 @@ function CommunityContent() {
                                 {communityData.length === 0 ? (
                                     <div className="col-span-full text-center py-1">
                                         <img
-                                            src="https://cdn.nekowawolf.xyz/image/2026/1787422427_nwwonee_search.webp"
+                                            src="https://cdn.nekowawolf.xyz/image/2026/1792948687_nwwonee_search.webp"
                                             alt="No data found"
-                                            width={160}
-                                            height={160}
+                                            width={144}
+                                            height={144}
                                             className="mx-auto"
                                         />
-                                        <p className="text-fill-color/50 -mt-4">No data available.</p>
+                                        <p className="text-fill-color/50 mt-1">No data available.</p>
                                     </div>
                                 ) : (
                                     communityData.map((item) => (
