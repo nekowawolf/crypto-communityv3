@@ -1,6 +1,7 @@
 "use client";
 
 import { useCommunity } from "@/hooks/useCommunity";
+import { useSearchParams } from "next/navigation";
 import NwwOneeAIChat from "@/components/NwwOneeAIChat";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -85,6 +86,9 @@ function FilterDropdown({ selectedPlatform, setSelectedPlatform }: { selectedPla
 }
 
 function CommunityContent() {
+    const searchParams = useSearchParams();
+    const targetId = searchParams.get('id');
+
     const {
         communityData,
         loading,
@@ -274,7 +278,7 @@ function CommunityContent() {
                                     </div>
                                 ) : (
                                     communityData.map((item) => (
-                                        <CommunityCard key={item._id} item={item} />
+                                        <CommunityCard key={item._id} item={item} autoOpen={targetId === item._id} />
                                     ))
                                 )}
                             </div>

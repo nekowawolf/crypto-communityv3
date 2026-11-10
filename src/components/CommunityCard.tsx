@@ -1,14 +1,31 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FallbackImage } from './FallbackImage';
 import { CommunityItem } from '@/types/community';
 import { chatStore } from '@/components/NwwOneeAIChat';
 import { CiBookmark } from "react-icons/ci";
 import { FaTimes } from 'react-icons/fa';
 
-export default function CommunityCard({ item }: { item: CommunityItem }) {
-    const [isOpen, setIsOpen] = useState(false);
+export default function CommunityCard({ item, autoOpen }: { item: CommunityItem; autoOpen?: boolean }) {
+    const [isOpen, setIsOpen] = useState(autoOpen ?? false);
+
+    useEffect(() => {
+        if (autoOpen) {
+            setIsOpen(true);
+        }
+    }, [autoOpen]);
+
+    const handleClose = () => {
+        setIsOpen(false);
+        if (typeof window !== 'undefined') {
+            const url = new URL(window.location.href);
+            if (url.searchParams.has('id')) {
+                url.searchParams.delete('id');
+                window.history.replaceState(null, '', url.pathname + (url.search ? url.search : ''));
+            }
+        }
+    };
 
     return (
         <>
@@ -93,7 +110,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
             {isOpen && (
                 <div
                     className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 cursor-pointer"
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleClose}
                     role="presentation"
                 >
                     <div
@@ -115,7 +132,7 @@ export default function CommunityCard({ item }: { item: CommunityItem }) {
                                 <CiBookmark className="w-[18px] h-[18px]" />
                             </button>
                             <button
-                                onClick={() => setIsOpen(false)}
+                                onClick={handleClose}
                                 className="w-9 h-9 flex items-center justify-center rounded-full bg-[rgba(var(--fill-color-rgb),0.06)] border border-color text-fill-color opacity-70 hover:opacity-100 transition-all cursor-pointer"
                                 aria-label="Close community details"
                             >

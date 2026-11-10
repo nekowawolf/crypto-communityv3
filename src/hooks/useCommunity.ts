@@ -165,16 +165,29 @@ export const useCommunity = () => {
         updateURL(selectedCategory, selectedPlatform, searchQuery, page);
     };
 
+    const targetId = searchParams.get('id');
+
     const filteredData = useMemo(() => {
         if (!Array.isArray(communityData)) return [];
 
-        return communityData.filter((item) => {
-            const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesCategory = selectedCategory === "All Types" || item.category === selectedCategory || (selectedCategory === "Developers" && item.category === "Developer");
-            const matchesPlatform = selectedPlatform === 'All' || item.platforms?.toLowerCase() === selectedPlatform.toLowerCase();
+        const filtered = communityData.filter((item) => {
+            const matchesId = targetId ? item._id === targetId : false;
+            const matchesSearch = matchesId || item.name.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesCategory = matchesId || selectedCategory === "All Types" || item.category === selectedCategory || (selectedCategory === "Developers" && item.category === "Developer");
+            const matchesPlatform = matchesId || selectedPlatform === 'All' || item.platforms?.toLowerCase() === selectedPlatform.toLowerCase();
             return matchesSearch && matchesCategory && matchesPlatform;
         });
-    }, [communityData, searchQuery, selectedCategory, selectedPlatform]);
+
+        if (targetId) {
+            const targetIdx = filtered.findIndex(item => item._id === targetId);
+            if (targetIdx > 0) {
+                const [targetItem] = filtered.splice(targetIdx, 1);
+                filtered.unshift(targetItem);
+            }
+        }
+
+        return filtered;
+    }, [communityData, searchQuery, selectedCategory, selectedPlatform, targetId]);
 
     useEffect(() => {
         const currentSearch = searchParams.get('search') || '';

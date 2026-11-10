@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { CommunityItem } from '@/types/community';
 import { Spinner } from '@/components/ui/spinner';
 import { FaTelegramPlane, FaDiscord, FaGlobe } from 'react-icons/fa';
@@ -10,9 +11,16 @@ import Pagination2 from '@/components/Pagination2';
 const ITEMS_PER_PAGE = 5;
 
 export default function LastCommunities() {
+  const router = useRouter();
   const [activities, setActivities] = useState<CommunityItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleCommunityClick = (community: any) => {
+    const searchParam = encodeURIComponent(community.name || '');
+    const idParam = community._id ? `&id=${encodeURIComponent(community._id)}` : '';
+    router.push(`/directory?search=${searchParam}${idParam}`);
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -90,10 +98,20 @@ export default function LastCommunities() {
               {displayedActivities.map((community: any) => (
                 <div
                   key={community._id}
-                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 relative transition-transform duration-300 sm:hover:translate-x-2 cursor-default w-full"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                      handleCommunityClick(community);
+                    }
+                  }}
+                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 relative transition-transform duration-300 sm:hover:translate-x-2 sm:cursor-pointer cursor-default w-full"
                 >
                   <div
-                    className="flex items-center gap-3 shrink-0 cursor-default w-fit"
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && window.innerWidth < 640) {
+                        handleCommunityClick(community);
+                      }
+                    }}
+                    className="flex items-center gap-3 shrink-0 cursor-pointer w-fit"
                   >
                     {community.image_url ? (
                       <img
@@ -136,7 +154,14 @@ export default function LastCommunities() {
                     )}
 
                     {/* Rolling Section */}
-                    <div className="relative flex items-center shrink-0 h-6 overflow-hidden w-[105px]">
+                    <div
+                      onClick={() => {
+                        if (typeof window !== 'undefined' && window.innerWidth < 640) {
+                          handleCommunityClick(community);
+                        }
+                      }}
+                      className="relative flex items-center shrink-0 h-6 overflow-hidden w-[105px] cursor-pointer"
+                    >
                       <div className="absolute inset-y-0 left-0 flex items-center text-xs text-fill-color/60 font-mono transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-full">
                         {community.created_at && (
                           <span>
